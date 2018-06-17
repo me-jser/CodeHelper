@@ -2,7 +2,7 @@
     <div id="app">
         <el-container style="border: 1px solid #eee">
             <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-                <el-menu :default-openeds="['1', '3']">
+                <el-menu>
                     <el-menu-item index="1-1"><i class="el-icon-setting"></i>环境检查</el-menu-item>
                     <el-submenu index="2">
                         <template slot="title"><i class="el-icon-menu"></i>前端脚手架</template>
@@ -13,12 +13,11 @@
                         </el-menu-item-group>
                         <el-menu-item-group title="react">
                             <el-menu-item index="2-3">Create React App</el-menu-item>
-                            <el-menu-item index="2-3">Create React Native App</el-menu-item>
+                            <el-menu-item index="2-4">Create React Native App</el-menu-item>
                         </el-menu-item-group>
                         <el-menu-item-group title="angular">
-                            <el-menu-item index="2-3">Create Angular App</el-menu-item>
+                            <el-menu-item index="2-5">Create Angular App</el-menu-item>
                         </el-menu-item-group>
-
                     </el-submenu>
                     <el-submenu index="3">
                         <template slot="title"><i class="el-icon-setting"></i>github</template>

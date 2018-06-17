@@ -6,17 +6,17 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/test',
-      name: 'landing-page',
-      component: require('@/components/LandingPage').default
+      path: '/home',
+      name: 'home-page',
+      component: require('@/components/Home').default
     }, {
-      path: '/',
+      path: '/env',
       name: 'env-checker',
       component: require('@/components/EnvChecker').default
     },
     {
       path: '*',
-      redirect: '/env'
+      redirect: '/home'
     }
   ]
 })
