@@ -8,6 +8,7 @@
 <script>
     const publicIp = require('public-ip');
     let ip = require("ip");
+    let {notifyer} = require('../../util/notify.js')
     export default {
         name: 'home-page',
         data() {
@@ -34,6 +35,8 @@
         },
         mounted() {
             this.getIpInfo()
+            notifyer({ title: 'My notification',
+  message: 'Hello, there!'})
         }
     }
 </script>
