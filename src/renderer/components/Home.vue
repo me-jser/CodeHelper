@@ -6,36 +6,41 @@
 </template>
 
 <script>
-    const publicIp = require('public-ip');
-    let ip = require("ip");
-    export default {
-        name: 'home-page',
-        data() {
-            return {
-                IP: ip.address(),
-                publicIp: '',
-                nodeVersion: '',
-                npmVersion: '',
-                webpackVersion: '',
-                eslint: ''
-            }
-        },
-        methods: {
-            open(link) {
-                this.$electron.shell.openExternal(link)
-            },
-            getIpInfo() {
-                publicIp.v4().then(ip => {
-                    this.publicIp = ip
-                }).catch(e => {
-                    console.log(e);
-                });
-            }
-        },
-        mounted() {
-            this.getIpInfo()
-        }
+import { getip } from "../../util/Network.js";
+let ip = require("ip");
+export default {
+  name: "home-page",
+  data() {
+    return {
+      IP: ip.address(),
+      publicIp: '',
+      nodeVersion: "",
+      npmVersion: "",
+      webpackVersion: "",
+      eslint: ""
+    };
+  },
+  methods: {
+    open(link) {
+      this.$electron.shell.openExternal(link);
+    },
+    getIpInfo() {
+    getip()
+        .then(res => res.json())
+        .then(json => {
+           this.publicIp.ip = json.data.ip;
+        })
+        .catch(err => {
+          console.log("公网IP获取错误:" + err);
+           
+        });
+
     }
+  },
+  mounted() {
+    this.getIpInfo();
+  }
+};
 </script>
 
 

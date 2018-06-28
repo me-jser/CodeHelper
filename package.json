@@ -1,6 +1,6 @@
 {
   "name": "code-helper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "John Smith <xiaosshuaii@gmail.com>",
   "description": "An electron-vue project",
   "license": "MIT",
@@ -52,8 +52,13 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "cross-spawn": "^6.0.5",
+    "cross-spawn-promise": "^0.10.1",
     "element-ui": "^2.4.1",
+    "node-fetch": "^2.1.2",
+    "node-notifier": "^5.2.1",
     "public-ip": "^2.4.0",
+    "shelljs": "^0.8.2",
     "vue": "^2.3.3",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",

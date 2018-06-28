@@ -149,13 +149,13 @@ function greeting () {
   const cols = process.stdout.columns
   let text = ''
 
-  if (cols > 104) text = 'electron-vue'
-  else if (cols > 76) text = 'electron-|vue'
+  if (cols > 104) text = 'electron'
+  else if (cols > 76) text = 'electron'
   else text = false
 
   if (text) {
     say(text, {
-      colors: ['yellow'],
+      colors: ['green'],
       font: 'simple3d',
       space: false
     })
