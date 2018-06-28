@@ -6,14 +6,14 @@
 </template>
 
 <script>
-const publicIp = require("public-ip");
+import { getip } from "../../util/Network.js";
 let ip = require("ip");
 export default {
   name: "home-page",
   data() {
     return {
       IP: ip.address(),
-      publicIp: "",
+      publicIp: '',
       nodeVersion: "",
       npmVersion: "",
       webpackVersion: "",
@@ -25,14 +25,16 @@ export default {
       this.$electron.shell.openExternal(link);
     },
     getIpInfo() {
-      publicIp
-        .v4()
-        .then(ip => {
-          this.publicIp = ip;
+    getip()
+        .then(res => res.json())
+        .then(json => {
+           this.publicIp.ip = json.data.ip;
         })
-        .catch(e => {
-          console.log(e);
+        .catch(err => {
+          console.log("公网IP获取错误:" + err);
+           
         });
+
     }
   },
   mounted() {

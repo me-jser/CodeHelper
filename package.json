@@ -55,6 +55,7 @@
     "cross-spawn": "^6.0.5",
     "cross-spawn-promise": "^0.10.1",
     "element-ui": "^2.4.1",
+    "node-fetch": "^2.1.2",
     "node-notifier": "^5.2.1",
     "public-ip": "^2.4.0",
     "shelljs": "^0.8.2",
