@@ -2,6 +2,7 @@ os: unstable
 cache:
   - node_modules
 environment:
+  package-version: node -p "require('./package.json').version"
   GH_TOKEN:
       secure: eqW7VwK36H04qPOzYuDJaWZzYSUZ/JlBvVPZZL98bpsc2a7FIxLBXPWzw7vrF/hV
   matrix:
@@ -14,9 +15,10 @@ install:
   - npm install
 matrix:
   fast_finish: true
-build: off
-version: '{build}'
+  before_build:
+  - cmd: ECHO '{package-version}'
+build: 
+ - npm run build
+version: '{package-version}'
 shallow_clone: true
 clone_depth: 1
-test_script:
-  - npm run build
