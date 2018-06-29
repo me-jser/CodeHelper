@@ -1,24 +1,7 @@
 os: unstable
-cache:
-  - node_modules
-environment:
-  package-version: node -p "require('./package.json').version"
-  GH_TOKEN:
-      secure: eqW7VwK36H04qPOzYuDJaWZzYSUZ/JlBvVPZZL98bpsc2a7FIxLBXPWzw7vrF/hV
-  matrix:
-    - nodejs_version: 8
 install:
-  - ps: Install-Product node $env:nodejs_version
-  - set CI=true
-  - npm install -g npm@latest
-  - set PATH=%APPDATA%\npm;%PATH%
-  - npm install
-matrix:
-  fast_finish: true
-  before_build:
-  - cmd: ECHO '{package-version}'
+   - set appv=node -p "require('./package.json').version"
+
 build: 
- - npm run build
-version: '{package-version}'
-shallow_clone: true
-clone_depth: 1
+ - cmd: ECHO '{appv}'
+
