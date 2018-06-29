@@ -1,29 +1,22 @@
-version: 0.1.{build}
-
-branches:
-  only:
-    - master
-
-image: Visual Studio 2017
-platform:
-  - x64
-
+os: unstable
 cache:
   - node_modules
-  - '%APPDATA%\npm-cache'
-  - '%USERPROFILE%\.electron'
-  - '%USERPROFILE%\AppData\Local\Yarn\cache'
-
-init:
-  - git config --global core.autocrlf input
-
+environment:
+  GH_TOKEN:
+      secure: eqW7VwK36H04qPOzYuDJaWZzYSUZ/JlBvVPZZL98bpsc2a7FIxLBXPWzw7vrF/hV
+  matrix:
+    - nodejs_version: 8
 install:
-  - ps: Install-Product node 8 x64
-  - git reset --hard HEAD
-  - yarn
-  - node --version
-
-build_script:
-  - yarn build
-
-test: off
+  - ps: Install-Product node $env:nodejs_version
+  - set CI=true
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+matrix:
+  fast_finish: true
+build: off
+version: '{build}'
+shallow_clone: true
+clone_depth: 1
+test_script:
+  - npm run build
